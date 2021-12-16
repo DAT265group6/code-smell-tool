@@ -80,6 +80,8 @@ class CommentedCodeScanner(TokenScanner):
 
     def is_code(self, code: str):
         code = re.sub(r'\s+', ' ', code).strip()
+        if len(code) == 0:
+            return False
 
         word_evidence = len(re.findall(
             r'\b((::)|(void)|(for)|(while)|(if)|(int)|(double)|(bool)|(std)|(return))\b', code))
